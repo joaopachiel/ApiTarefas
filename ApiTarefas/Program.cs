@@ -1,4 +1,6 @@
 using ApiTarefas.Data;
+using ApiTarefas.Integration;
+using ApiTarefas.Integration.Interfaces;
 using ApiTarefas.Integration.Refit;
 using ApiTarefas.Repositorios;
 using ApiTarefas.Repositorios.Interfaces;
@@ -27,6 +29,7 @@ namespace ApiTarefas
 
             builder.Services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
             builder.Services.AddScoped<ITarefaRepositorio, TarefaRepositorio>();
+            builder.Services.AddScoped<IViaCepIntegration, ViaCepIntegration>();
             builder.Services.AddRefitClient<IViaCepIntegrationRefit>().ConfigureHttpClient(c =>
             {
                 c.BaseAddress = new Uri("http://viacep.com.br");
